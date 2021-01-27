@@ -115,3 +115,6 @@ package-lock.json
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# 애플 DS_Store파일 제외
+.DS_Store
