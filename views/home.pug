@@ -1,4 +1,10 @@
 extends layouts/main
 
 block content
-    p Home
+    .videos
+        each video in videos2 
+            h1= video.title
+            p= video.description
+            div= video.videoFile
+//- //video는 변수명이고 어떤 이름을 붙여도 상관없다.
+        
