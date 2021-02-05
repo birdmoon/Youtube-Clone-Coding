@@ -21,6 +21,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev")); //application에서 발생하는 모든 일들을 logging하는 미들웨어
 app.use(localsMiddleware); //middleware.js에 만들어놓은 localsMiddleware함수는 globalRouter, userRouter, videoRouter보다 상위에 위치해 있어야 한다.
 
+app.use(function (req, res, next) {
+  res.setHeader(
+    "Content-Security-Policy",
+    "script-src 'self' https://archive.org"
+  );
+  return next();
+});
+
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter); //use는 누군가 use경로로 오면 이 라우터 전체를 사용하겠다는 의미임. 누군가 routes.users로 접속하면 userRouter를 사용하겠다.
 app.use(routes.videos, videoRouter);

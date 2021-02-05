@@ -1,0 +1,12 @@
+mixin videoBlock(video = {})
+    .videoBlock
+        video.videoBlock__thumbnail(src=video.videoFile, controls=true)
+        h4.videoBlock__title=video.title
+        h6.videoBlock__views=video.views
+
+//- mixin은 pug 함수의 일종이다. 
+//- 객체가 mixin에 입력되면, 그 객체의 title을 받아와서 화면에 표시하는 형태
+//- h1=video.title 띄어쓰기 주의할 것!
+
+//- 각각 다른 정보를 가지미나 같은 구조를 가지는 데이터를 표시하기 위한 코드를 캡슐화했다
+//- 이 것이 mixin을 사용하는 이유다. 다른 정보, 같은 구조.
