@@ -1,5 +1,11 @@
 import express from "express";
-import { getJoin, postJoin, login, logout } from "../controller/userController";
+import {
+  getJoin,
+  getLogin,
+  postJoin,
+  postLogin,
+  logout,
+} from "../controller/userController";
 import { home, search } from "../controller/videoController";
 import routes from "../routes";
 
@@ -11,7 +17,8 @@ globalRouter.post(routes.join, postJoin);
 globalRouter.get(routes.home, home);
 globalRouter.get(routes.search, search);
 
-globalRouter.get(routes.login, login);
+globalRouter.get(routes.login, getLogin);
+globalRouter.post(routes.login, postLogin);
 globalRouter.get(routes.logout, logout);
 
 // globalRouter.get(routes.home, (req, res) => res.send("Home"));

@@ -5,11 +5,20 @@ header.header
     .header__column
         form(action=routes.search, method="get")
             input(type="text", placeholder="Search by term...", name="term")
-            //HTML에서 form+input으로 정보를 보낸다. 여기서 form태그는 get방식이어야 하며, input태그의 name값이 쿼리 이름이 된다.
-            //videoController에서 req.query 로 input의 name값으로 보낸 데이터를 받는다. 그로기 위 데이터를 다시 pug로 전달해서 받아준다.
+            //- HTML에서 form+input으로 정보를 보낸다. 여기서 form태그는 get방식이어야 하며, input태그의 name값이 쿼리 이름이 된다.
+            //- videoController에서 req.query 로 input의 name값으로 보낸 데이터를 받는다. 그로기 위 데이터를 다시 pug로 전달해서 받아준다.
     .header__column
         ul
-            li
-                a(href=routes.join) Join
-            li
-                a(href=routes.login) Login
+            if !user.isAuthenticated
+                li
+                    a(href=routes.join) Join
+                li
+                    a(href=routes.login) Login
+            else 
+                li
+                    a(href=`/videos${routes.upload}`) Upload
+                li
+                    a(href=routes.userDetail(user.id)) Profile
+                li
+                    a(href=routes.logout) Log Out
+//- middleware에서 res.locals.user에 isAuthenticated:true가 담긴 객체를 입력함.

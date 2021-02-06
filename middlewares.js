@@ -3,6 +3,10 @@ import routes from "./routes";
 export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "WeTube"; //미들웨어에서 locals에 siteName을 추가했다.
   res.locals.routes = routes; //routes에 routes.js 객체를 추가.
+  res.locals.user = {
+    isAuthenticated: true,
+    id: 1,
+  };
   next();
 };
 
