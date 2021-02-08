@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 mongoose.connect("mongodb://localhost:27017/we-tube", {
   useNewUrlParser: true,
   useFindAndModify: false,
+  useUnifiedTopology: true,
 });
 
 const db = mongoose.connection;
