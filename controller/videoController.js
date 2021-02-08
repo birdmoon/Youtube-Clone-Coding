@@ -1,4 +1,4 @@
-import { videos2 } from "../db";
+// import { videos2 } from "../db";
 import routes from "../routes";
 
 export const home = (req, res) =>
