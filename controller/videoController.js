@@ -1,8 +1,26 @@
 // import { videos2 } from "../db";
 import routes from "../routes";
+import Video from "../models/Video"; //이건 Database의 element가 아니라 단지 model이야, 아예 다른거임. element를 받는 통로일 뿐이지 element 자체는 아님.
 
-export const home = (req, res) =>
-  res.render("home", { pageTitle: "Nestory", videos2 });
+export const home = async (req, res) => {
+  try {
+    const videos2 = await Video.find({});
+    throw Error("asdkjal");
+    res.render("home", { pageTitle: "Nestory", videos2 });
+  } catch (error) {
+    console.log(error);
+    res.render("home", { pageTitle: "Nestory", videos2: [] });
+  }
+  // const videos2 = await Video.find({});
+
+  //async 자바스크립트 함수를 추가 , 너를 기다려주는 무언가임.
+  //async는 "자바스크립트야 funciton의 어떤 부분은 꼭 기다려야해"라고 의미와 같다.
+  //await을 하게 되면 await 부분이 끝나기 전까지는 render부분을 실행하지 않을 것이란 걸 확실하게 보여준다. 아주 멋지지!
+  //해당 과정이 성공적으로 끝나야 하는건 아니야, 그냥 끝날 때까지 기다리는거지,
+  //예를 들어 error가 생겨도 다음 render 부분을 실행해 왜냐면 끝났거든 성공적으로 끝난게 아니라 그냥 끝난거야.
+  //이렇게 짜는 건 좋지 않아, 발생할 수 있는 모든 error를 잡아야 해..
+  //그래서 try로 감싼다. try는 우리가 해야 할 것들, 그리고 만약 실패한다면 해당 error를 잡아낼거야. 그래야 우리가 무슨 error인지 볼 수 있거든
+};
 
 export const search = (req, res) => {
   const {

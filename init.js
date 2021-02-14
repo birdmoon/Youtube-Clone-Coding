@@ -3,6 +3,7 @@ import app from "./app";
 import dotenv from "dotenv";
 dotenv.config();
 import "./models/Video";
+import "./models/Comment";
 
 const PORT = process.env.PORT || 4000;
 //이런식으로 dotenv를 활용해서 key를 숨긴다. 이렇게 하면 키가 다른 곳에서 보이지 않지..

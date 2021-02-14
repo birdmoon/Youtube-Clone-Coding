@@ -20,6 +20,12 @@ const VideoSchema = new mongoose.Schema({
     //Date.now 자체는 function이고 Date.now()는 그 함수를 실행해서 현재 날짜를 반환하는 거야.
     //따라서 default: Date.now를 하게되면 document를 저장할 때마다 해당 function을 실행해서 현재 날짜를 받게 된다.
   },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
 //해야 할 것 하나는 model 즉 document name이고 다른 하나는 schema야
